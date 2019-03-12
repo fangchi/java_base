@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Test;
 
@@ -27,4 +29,6 @@ public class TransientTest {
 		System.out.println("3.恢复成原始对象\n" + rectangle1);
 		in.close();
 	}
+	
+	
 }

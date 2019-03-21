@@ -2,6 +2,10 @@ package com.fc.falseshare;
 
 import org.junit.Test;
 
+/**
+ * 伪共享
+ * @author chi.fang
+ */
 @sun.misc.Contended
 public class FalseShareTest implements Runnable {
 	public static int NUM_THREADS = 4;

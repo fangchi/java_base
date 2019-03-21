@@ -35,7 +35,7 @@ public class TwinsLock implements Lock {
 				System.out.println("尝试获取锁,线程:"+Thread.currentThread()+",当前State:"+current);
 				int newCount = current - reduceCount;
 				//小于0  则代表获取失败
-				//0 共享模式下 成功
+				//0 成功  但无剩余资源
 				//大于0 成功
 				if (newCount < 0 || compareAndSetState(current, newCount)) {
 					return newCount;

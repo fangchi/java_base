@@ -64,11 +64,13 @@ public class ServerNIO {
 			ssc = ServerSocketChannel.open();
 			ssc.socket().bind(new InetSocketAddress(PORT));
 			ssc.configureBlocking(false);//每个通路必须是非阻塞
-			ssc.register(selector, SelectionKey.OP_ACCEPT);
+			ssc.register(selector, SelectionKey.OP_ACCEPT|SelectionKey.OP_READ | SelectionKey.OP_WRITE);
 			
 			ssc2 = ServerSocketChannel.open();
 			ssc2.socket().bind(new InetSocketAddress(PORT+1));
 			ssc2.configureBlocking(false);//每个通路必须是非阻塞
+			// 通常我们都是先注册一个 OP_ACCEPT 事件, 然后在 OP_ACCEPT 到来时, 再将这个 Channel 的 OP_READ
+			// 注册到 Selector 中.
 			ssc2.register(selector, SelectionKey.OP_ACCEPT);
 			
 			while (true) {

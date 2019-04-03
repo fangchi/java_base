@@ -4,7 +4,11 @@ import java.nio.ByteBuffer;
 
 import org.junit.Test;
 
-
+/**
+ * https://blog.csdn.net/hemeinvyiqiluoben/article/details/82861355
+ * @author chi.fang
+ *
+ */
 public class NioBuffer {
 
 	String str="helloworld";
@@ -21,6 +25,8 @@ public class NioBuffer {
 			缓冲区数组中不可操作的下一个元素的位置：limit<=capacity
 			mark
 			用于记录当前position的前一个位置或者默认是-1
+			
+			0 <= position <= limit <= capacity
     	 */
     	
         //1.分配一个指定大小的缓冲区
@@ -68,7 +74,8 @@ public class NioBuffer {
         System.out.println(bb.capacity());
         System.out.println(bb.limit());//指针全部回到最原始状态，不知道有多少数据
         System.out.println(bb.position());
-        System.out.println((char)bb.get());
+        System.out.println(bb.get(by));
+        System.out.println(new String(by,0,by.length));
     }
 
     @Test
@@ -86,11 +93,14 @@ public class NioBuffer {
 
         bb.get(by,2,3);
         System.out.println(new String(by,2,3));
-        System.out.println(bb.position());//到第二个字节了
+        System.out.println(bb.position());//到第5个字节了
 
         //重置
         bb.reset();
         System.out.println(bb.position());//位置又回到标记处
+        bb.get(by,2,3);
+        System.out.println(new String(by,2,3));
+        System.out.println(bb.position());//到第5个字节了
     }
 
     @Test

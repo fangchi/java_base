@@ -1,4 +1,4 @@
-package com.fc.transients;
+package com.fc.concurrency.volatil;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -21,6 +21,12 @@ import org.junit.Test;
 	  	> 重排序是为了优化性能，但是不管怎么重排序，单线程下程序的执行结果不能被改变
 	  	比如：a=1;b=2;c=a+b这三个操作，第一步（a=1)和第二步(b=2)由于不存在数据依赖关系，所以可能会发生重排序，
 	  		但是c=a+b这个操作是不会被重排序的，因为需要保证最终的结果一定是c=a+b=3
+	  		
+	 适用情况
+	 1.对变量的写操作不依赖于当前值 
+	   context初始化
+	   while(ready){
+	   }
  * @author chi.fang
  *
  */

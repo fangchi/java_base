@@ -7,17 +7,15 @@ public class CyclicBarrierDemo {
 
 	public static void main(String[] args) {
 		int N = 4;
-		CyclicBarrier barrier = new CyclicBarrier(N);
-		for (int i = 0; i < N; i++){
-			new Writer(barrier).start();
-		}
+//		CyclicBarrier barrier = new CyclicBarrier(N);
+//		for (int i = 0; i < N; i++){
+//			new Writer(barrier).start();
+//		}
 		
-		CyclicBarrier cyclicBarrier =  new CyclicBarrier(N,new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("当前线程"+Thread.currentThread().getName());   
-            }
+		CyclicBarrier cyclicBarrier =  new CyclicBarrier(N,()->{
+		    System.out.println("当前线程"+Thread.currentThread().getName());   
         });
+		
 		for (int i = 0; i < N; i++){
 			new Writer(cyclicBarrier).start();
 		}

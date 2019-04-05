@@ -1,4 +1,4 @@
-package com.fc.lock;
+package com.fc.concurrency.lock;
 
 import java.util.concurrent.locks.LockSupport;
 

@@ -1,4 +1,4 @@
-package com.fc.lock;
+package com.fc.concurrency.lock;
 
 /**
  * 可重入锁

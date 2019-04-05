@@ -1,4 +1,4 @@
-package com.fc.cas;
+package com.fc.concurrency.atomic;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;

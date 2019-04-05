@@ -1,4 +1,4 @@
-package com.fc.unsafe;
+package com.fc.concurrency.unsafe;
 
 import java.lang.reflect.Field;
 

@@ -1,4 +1,4 @@
-package com.fc.thread;
+package com.fc.concurrency.thread;
 
 import java.util.Random;
 import java.util.concurrent.Semaphore;

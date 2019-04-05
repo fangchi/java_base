@@ -1,4 +1,4 @@
-package com.fc.futruetask;
+package com.fc.concurrency.futruetask;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;

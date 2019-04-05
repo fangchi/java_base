@@ -1,4 +1,4 @@
-package com.fc.thread;
+package com.fc.concurrency.thread;
 
 public class TestWait {
 	 public static Object object = new Object();

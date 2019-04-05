@@ -1,4 +1,4 @@
-package com.fc.synchroniz;
+package com.fc.concurrency.synchroniz;
 
 public class SynchronizedDemo {
 

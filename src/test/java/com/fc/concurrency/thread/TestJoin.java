@@ -17,7 +17,6 @@ public class TestJoin {
             thread2.join();
             System.out.println("线程"+Thread.currentThread().getName()+"继续执行");
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     } 

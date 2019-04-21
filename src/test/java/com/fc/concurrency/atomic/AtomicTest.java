@@ -7,6 +7,7 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.atomic.LongAdder;
+import java.util.concurrent.locks.ReentrantLock;
 
 import com.fc.concurrency.annotations.ThreadSafe;
 import com.fc.concurrency.annotations.ThreadUnSafe;
@@ -30,6 +31,8 @@ public class AtomicTest {
     
     @ThreadSafe
     static AtomicReference<Integer> count4 = new AtomicReference<Integer>(0);
+    
+    static ReentrantLock lock = new ReentrantLock();
     
     public static void main(String[] args) throws InterruptedException {
         ExecutorService executorService = Executors.newFixedThreadPool(20);
@@ -56,7 +59,9 @@ public class AtomicTest {
     }
     
     private static  void add() {
+        lock.lock();
         count++;
+        lock.unlock();
         count2.incrementAndGet();
         count3.add(1);
         count4.compareAndSet(0, 8);

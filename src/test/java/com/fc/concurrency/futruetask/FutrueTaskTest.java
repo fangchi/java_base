@@ -8,6 +8,7 @@ import java.util.concurrent.TimeoutException;
 
 /**
  * 可取消的Task
+ * 
  * 规定时间内获取
  * @author chi.fang
  *
@@ -15,8 +16,10 @@ import java.util.concurrent.TimeoutException;
 public class FutrueTaskTest {
 
 	public static void main(String[] args) throws InterruptedException, ExecutionException, TimeoutException {
-		FutureTask<Object> task = new FutureTask<Object>( new Callable<Object>() {
-			@Override
+		FutureTask<Object> task = new FutureTask<Object>(new Callable<Object>() {
+			
+		    //可获取返回值
+		    @Override
 			public Object call() throws Exception {
 				for (int i = 0; i < 1000; i++) {
 					Thread.sleep(200);

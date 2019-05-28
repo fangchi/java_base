@@ -1,9 +1,7 @@
 package com.fc.basicpath;
 
 /**
- * 测试类
- * remote 1 local1
- * 测试类
+ * 测试类 remote 1 local1 OIE 测试类
  */
 public class BasicType {
 

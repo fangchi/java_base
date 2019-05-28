@@ -2,6 +2,7 @@ package com.fc.basicpath;
 
 /**
  * 测试类
+ * remote 1
  */
 public class BasicType {
 

@@ -1,5 +1,8 @@
 package com.fc.basicpath;
 
+/**
+ * 测试类
+ */
 public class BasicType {
 
 	public static void main(String[] args) {

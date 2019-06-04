@@ -50,5 +50,6 @@ public class StreamTest {
         System.out.println("parallelStream....");
         stuList.parallelStream().filter(s1 -> s1.getScore() > 80).peek(s1 -> s1.setScore(s1.getScore() + 100))
             .peek(System.out::println).collect(toList());// .forEach(System.out::println);
+
     }
 }

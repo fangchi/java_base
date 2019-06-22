@@ -1,10 +1,7 @@
 package com.fc.jd8;
 
 import java.util.*;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.function.*;
 import java.util.stream.Stream;
 
 public class LambaTest {
@@ -32,6 +29,11 @@ public class LambaTest {
         Boolean s = fun2.test(a);
         System.out.println(s);
     }
+
+    public  BiFunction<String,String,Long> adThirdBinaryOperator = ( f,  s) -> {
+        return Long.parseLong(f)+Long.parseLong(s);
+    };
+
 
     public static void main(String[] args) {
         List<Student> studentList = new ArrayList<Student>() {
@@ -73,5 +75,7 @@ public class LambaTest {
         for (Student student : students) {
             System.out.println(student.getName());
         }
+
+        Long s = new LambaTest().adThirdBinaryOperator.apply("2","3");
     }
 }

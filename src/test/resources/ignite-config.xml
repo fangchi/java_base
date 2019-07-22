@@ -1,0 +1,69 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd">
+    <bean id="ignite.cfg" class="org.apache.ignite.configuration.IgniteConfiguration">
+        <!--对等类加载是否启用，默认为true不开启很容易报错-->
+        <property name="peerClassLoadingEnabled" value="true"/>
+        <!--失败检测 超时时长-->
+        <property name="failureDetectionTimeout" value="60000"/>
+        <!--公共线程池大小 -->
+        <property name="publicThreadPoolSize" value="512"/>
+        <!--系统线程池大小 -->
+        <property name="systemThreadPoolSize" value="512"/>
+        <!--源线程池大小 -->
+        <property name="stripedPoolSize" value="512"/>
+        <!--数据流线程池大小 -->
+        <property name="dataStreamerThreadPoolSize" value="512"/>
+        <!--查询线程池大小 根据实际情况而定-->
+        <property name="queryThreadPoolSize" value="512"/>
+        <!--平衡线程池大小 根据实际情况而定-->
+        <property name="rebalanceThreadPoolSize" value="15"/>
+        <!--用户验证是否开启 默认为false 开启后默认用户名密码都是ignite-->
+        <property name="authenticationEnabled" value="false"/>
+        <!--数据存储配置 -->
+        <property name="dataStorageConfiguration">
+            <bean class="org.apache.ignite.configuration.DataStorageConfiguration">
+                <!--并发性水平   可由自己实际情况而定 -->
+                <property name="concurrencyLevel" value="72"/>
+                <!--数据分布配置 默认是都存放到内存中，此处进行持久化 -->
+                <property name="defaultDataRegionConfiguration">
+                    <bean class="org.apache.ignite.configuration.DataRegionConfiguration">
+                        <!--是否持久化到磁盘 true为持久化 -->
+                        <property name="persistenceEnabled" value="false"/>
+                        <property name="name" value="vehicle_Region"/>
+                        <!-- 2G initial size. 初始化内存-->
+                        <property name="initialSize" value="#{1L * 1024 * 1024 * 1024}" />
+                        <!-- 10G maximum size. 最大内存大小-->
+                        <property name="maxSize" value="#{1L * 1024 * 1024 * 1024}" />
+                        <property name="checkpointPageBufferSize" value="#{1L *1024* 1024 * 1024L}" />
+                    </bean>
+                </property>
+                <!-- Defining several data regions for different memory regions 持久化数据存储目录 ******注意该地方目录需修改成自己的****** -->
+                <!--<property name="storagePath" value="/home/igniteServer/Storage" />-->
+                <!--<property name="walArchivePath" value="/home /igniteServer/WalArchive" />-->
+                <!--<property name="walPath" value="/home/igniteServer/Wal" />-->
+            </bean>
+
+        </property>
+        <!-- Explicitly configure TCP discovery SPI to provide list of initial nodes.
+Ignite自己本身有发现机制，只需要配置静态IP即可相互发现；单机只需要配置自己即可-->
+        <property name="discoverySpi">
+            <bean class="org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi">
+                <property name="ipFinder">
+                    <bean class="org.apache.ignite.spi.discovery.tcp.ipfinder.vm.TcpDiscoveryVmIpFinder">
+                        <property name="addresses">
+                            <list>
+                                <value>127.0.0.1:47500..47509</value>
+                            </list>
+                        </property>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+</beans>

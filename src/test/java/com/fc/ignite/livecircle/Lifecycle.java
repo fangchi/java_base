@@ -1,4 +1,4 @@
-package com.fc.ignite;
+package com.fc.ignite.livecircle;
 
 import org.apache.ignite.Ignite;
 import org.apache.ignite.Ignition;

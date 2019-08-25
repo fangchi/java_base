@@ -12,17 +12,26 @@
         <!--失败检测 超时时长-->
         <property name="failureDetectionTimeout" value="60000"/>
         <!--公共线程池大小 -->
-        <property name="publicThreadPoolSize" value="512"/>
+        <property name="publicThreadPoolSize" value="8"/>
         <!--系统线程池大小 -->
-        <property name="systemThreadPoolSize" value="512"/>
+        <property name="systemThreadPoolSize" value="8"/>
         <!--源线程池大小 -->
-        <property name="stripedPoolSize" value="512"/>
+        <property name="stripedPoolSize" value="8"/>
         <!--数据流线程池大小 -->
-        <property name="dataStreamerThreadPoolSize" value="512"/>
+        <property name="dataStreamerThreadPoolSize" value="8"/>
         <!--查询线程池大小 根据实际情况而定-->
-        <property name="queryThreadPoolSize" value="512"/>
+        <property name="queryThreadPoolSize" value="8"/>
         <!--平衡线程池大小 根据实际情况而定-->
-        <property name="rebalanceThreadPoolSize" value="15"/>
+        <property name="rebalanceThreadPoolSize" value="6"/>
+        <!--自定义线程池-->
+        <property name="executorConfiguration">
+            <list>
+                <bean class="org.apache.ignite.configuration.ExecutorConfiguration">
+                    <property name="name" value="myPool"/>
+                    <property name="size" value="16"/>
+                </bean>
+            </list>
+        </property>
         <!--用户验证是否开启 默认为false 开启后默认用户名密码都是ignite-->
         <property name="authenticationEnabled" value="false"/>
         <!--数据存储配置 -->
@@ -39,7 +48,7 @@
                         <!-- 2G initial size. 初始化内存-->
                         <property name="initialSize" value="#{1L * 1024 * 1024 * 1024}" />
                         <!-- 10G maximum size. 最大内存大小-->
-                        <property name="maxSize" value="#{1L * 1024 * 1024 * 1024}" />
+                        <property name="maxSize" value="#{4L * 1024 * 1024 * 1024}" />
                         <property name="checkpointPageBufferSize" value="#{1L *1024* 1024 * 1024L}" />
                     </bean>
                 </property>

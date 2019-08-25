@@ -3,9 +3,6 @@ package com.fc.ignite;
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCompute;
 import org.apache.ignite.Ignition;
-import org.apache.ignite.cache.CacheAtomicityMode;
-import org.apache.ignite.cache.CacheMode;
-import org.apache.ignite.configuration.CacheConfiguration;
 import org.apache.ignite.configuration.IgniteConfiguration;
 import org.apache.ignite.lang.IgniteFuture;
 
@@ -23,7 +20,7 @@ public class Futrue {
             IgniteFuture<String> fut = compute.callAsync(() -> {
                 return "Hello World";
             });
-
+            System.out.println("exexuteHere");
 // Listen for completion and print out the result.
             fut.listen(f -> System.out.println("Job result: " + f.get()));
         }

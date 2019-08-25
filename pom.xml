@@ -104,6 +104,11 @@
             <artifactId>ignite-indexing</artifactId>
             <version>${ignite.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.takawitter</groupId>
+            <artifactId>trie4j</artifactId>
+            <version>0.9.8</version>
+        </dependency>
 
     </dependencies>
 </project>
